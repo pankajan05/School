@@ -15,5 +15,8 @@
      <input type="text" name="Student_no">
      <button type="submit" name="submit" >submit</button>
    </form>
+    
+    <br><br><br>
+    <a href="detail.php">view Subject Details</a>
 </body>
 </html>

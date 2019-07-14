@@ -1,20 +1,26 @@
-<?php
-$sno = $_REQUEST['Student_no'];
+<html>
+<head>
+<title>School</title>
+</head>
+<body>
+   <?php
+include 'db.php';
+$sno = $_REQUEST['sno'];
 
 // var_dump($sno); die();
 
-$sql = "select * form student where student_id = '$sno'";
-echo $sql;
+$sql = "select * from student where student_id = '$sno'";
+//echo $sql;
 
-$result = $con -> query($sql);
+$result1 = $con->query($sql);
 
-if($result->num_rows > 0){
-  while($row = $result->fetch_assoc()){
-    $sname = $row['sname'];
+if($result1->num_rows > 0){
+  while($row = $result1->fetch_assoc()){
+    $sname = $row['student_name'];
 
-    $sql2 = "select * from subject s , mark m where student_id = '" .$sno."'";
+    $sql2 = "select * from subject s , follow m where s.subject_id = m.subject_id and m.student_id = '" .$sno."'";
 
-    $result2 = $con -> query($sql);
+    $result2 = $con -> query($sql2);
     echo "subject     Marks<br>";
     echo"_______________________________<br>";
 
@@ -28,3 +34,10 @@ if($result->num_rows > 0){
 }
 
 ?>
+    
+
+<a href="search.php"><br><br><br>Back</a>
+</body>
+</html>
+
+
